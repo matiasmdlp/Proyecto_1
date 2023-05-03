@@ -18,6 +18,7 @@ public:
     ~NodeRes();
     void setCount(int);
     int getCount();
+    void setMax(int);
     int getMax();
     void suma_sup();
     void setPadre(NodeRes*);

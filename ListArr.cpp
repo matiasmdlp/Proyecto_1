@@ -3,13 +3,17 @@
 
 ListArr::ListArr(int x){   
     max = x;
+    nivel = 0;
     Arbol[max];
     Head= new Node(max,nullptr);
     num_nodos=1;
+    calcMAx();
 } 
 
 ListArr::~ListArr(){
-    
+    deletearbol();
+    delete[] Arbol;
+    delete Head, &nivel, &num_nodos,&num_hojas, &num_nodRes,&max, &Max_Arbol;
 }
 
 void ListArr::insert_left(int x){ //Inserta un nuevo valor v a la izquierda del ListArr. Equivalentemente, inserta el valor v en el índice 0
@@ -40,6 +44,29 @@ bool ListArr::isEmpty(){
     
 }
 
+void ListArr::Build(){ // si existe un Arbol, lo elimina y crea otro, en cas de no existir, solo crea uno
+    calcMAx();
+    deletearbol();
+    NodeRes* Arbol[num_nodRes];
+    Tail_Arbol=0;
+
+    for(int i=0; i<num_intnod; i++){
+        Arbol[i] = new NodeRes(0);
+    }
+
+
+}
+
+void ListArr::calcMAx(){
+    if(num_nodos>num_hojas){
+        nivel++;
+    }
+    Max_Arbol = pow(2, nivel)*max;
+    num_hojas = pow(2, nivel);
+    num_nodRes = 2*num_hojas-1;
+    num_intnod = num_nodRes - num_hojas;
+}
+
 int ListArr::sumar(int pos){        // desde la raiz pedimos la cantidad de datos contenida en sus hijos y las sumamos 
     if(Arbol[pos].getCount()!=0 || Arbol[pos].getMax()==max){
         return Arbol[pos].getCount();
@@ -64,11 +91,46 @@ pair<int, int> ListArr::buscarpos(int i, int y){ // indice i(inicio de la busque
     }
 }
 
+void ListArr::deletearbol(){
+    for(int i=0; i<num_nodRes; i++){
+        Arbol[i].~NodeRes();
+    }
+}
+
+void ListArr::deletenodes(){
+    for(int i=0; i<num_nodos; i++){
+        Node* aux=Head;
+        Head = Head->getNext();
+        delete aux;
+        if(Head->getNext()==nullptr){
+            delete Head;
+        }
+    }
+    Node* Head=nullptr;
+}
+
+void ListArr::sumasuper(int i){  //sumar 1 desde la hoja hasta la raiz, una vez se agregue un nuevo dato.
+    int y=i;
+    Arbol[y].suma_sup();
+
+    while(y>0){
+        Arbol[(y-1)/2].suma_sup();
+        y = (y-1)/2;
+    }
+}
+
+void ListArr::setNodeMax(int pos, int max_val){
+    int val=max_val;
+    Arbol[pos].setMax(val);
+    if(val>max){
+        setNodeMax(2*pos+1, (val/2));
+        setNodeMax(2*pos+2, (val/2));
+    }
+}
+
 /////****/////****/////****/////****/////
 /*
-void ListArr::Build(){ // si existe un Arbol, lo elimina y crea otro, en cas de no existir, solo crea uno
-      
-}
+
 
 void ListArr::crear(int pos){   //esta funcion asigna de forma recursiva el numero maximo que puede almacenar cada nodo
     

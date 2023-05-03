@@ -28,6 +28,16 @@ pair<int, int> buscarpos(int i, int y, NodeRes* Arbol){
     }
 }
 
+void sumasuper(int i, NodeRes* Arbol){  //sumar 1 desde la hoja hasta la raiz, una vez se agregue un nuevo dato.
+    int y=i;
+    Arbol[y].suma_sup();
+
+    while(y>0){
+        Arbol[(y-1)/2].suma_sup();
+        y = (y-1)/2;
+    }
+}
+
 int main() {
     int num=3;
     NodeRes* Arbol;
@@ -61,14 +71,18 @@ int main() {
 
     NodeRes x6(num);
     x6.setPadre(&x2);
-    x6.setCount(2);
+    x6.setCount(0);
     Arbol[6] = x6;
 
     int sum = sumar(0, num, Arbol);
     
-    cout<<sum<<endl;
-
+    cout<<Arbol[0].getCount()<<endl;
     
+    sumasuper(6, Arbol);
+
+    cout<<Arbol[0].getCount()<<endl;
+
+
     pair<int, int> busca= buscarpos(0, 7,Arbol);
     int indice = busca.first;
     int pos = busca.second;

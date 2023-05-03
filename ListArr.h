@@ -12,9 +12,18 @@ private:
 	NodeRes* Arbol;
 	Node* Head;
 	int num_nodos;
-	int exp;
+	int nivel;
 	int num_hojas;
+	int num_nodRes;
 	int max;
+	int Max_Arbol;
+
+	void calcMAx();
+	void Build();
+	void deletearbol();
+	void deletenodes();
+	void sumasuper(int i);
+	int sumar(int);
 		
 public:
 	ListArr(int);
@@ -26,8 +35,7 @@ public:
     bool find(int); 
 	bool isEmpty();
 	int size();
-	void Agregar();
-	int sumar(int);
+	void Agregar();	
 	pair<int, int> buscarpos(int i, int y);
 };
 

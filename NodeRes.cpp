@@ -30,14 +30,15 @@ int NodeRes::getCount(){
     return Count;
 }
 
+void NodeRes:: setMax(int x){
+    Max = x;
+}
+
 int NodeRes::getMax(){
     return Max;
 }
 
 void NodeRes::suma_sup(){
-    if(Padre!=nullptr){
-        Padre->suma_sup();
-    }
     Count++;
 }
 
