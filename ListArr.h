@@ -14,9 +14,11 @@ private:
 	int num_nodos;
 	int nivel;
 	int num_hojas;
+	int num_intnod;
 	int num_nodRes;
 	int max;
 	int Max_Arbol;
+	int Tail_Arbol;
 
 	void calcMAx();
 	void Build();
@@ -24,6 +26,8 @@ private:
 	void deletenodes();
 	void sumasuper(int i);
 	int sumar(int);
+	void setNodeMax(int, int);
+
 		
 public:
 	ListArr(int);
