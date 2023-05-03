@@ -68,22 +68,23 @@ NodeRes* NodeRes::getLeft(){
 
 void NodeRes::setArr(Node* node){
     Arr = node;
+    Count = node->getCount();
 }
 
 Node* NodeRes::getArr(){
     return Arr;
 }
 
-void NodeRes::insertLeft(int num){
-    Arr->insertLeft(num);
+int NodeRes::insertLeft(int num){
+    return Arr->insertLeft(num);
 }
 
-void NodeRes::insertRight(int num){
-    Arr->insertRight(num);
+int NodeRes::insertRight(int num){
+    return Arr->insertRight(num);
 }
 
-void NodeRes::insert(int num, int pos){
-    Arr->insert(num, pos);
+int NodeRes::insert(int num, int pos){
+    return Arr->insert(num, pos);
 }
 
 void NodeRes::print(){

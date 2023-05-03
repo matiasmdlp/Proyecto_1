@@ -27,6 +27,8 @@ private:
 	void sumasuper(int i);
 	int sumar(int);
 	void setNodeMax(int, int);
+	void asociar();
+	pair<int, int> buscarpos(int i, int y);
 
 		
 public:
@@ -39,8 +41,7 @@ public:
     bool find(int); 
 	bool isEmpty();
 	int size();
-	void Agregar();	
-	pair<int, int> buscarpos(int i, int y);
+	void Agregar();		
 };
 
 #endif

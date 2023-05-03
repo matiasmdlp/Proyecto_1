@@ -29,9 +29,9 @@ public:
     NodeRes* getLeft();
     void setArr(Node*);
     Node* getArr();
-    void insertLeft(int);
-    void insertRight(int);
-    void insert(int, int);
+    int insertLeft(int);
+    int insertRight(int);
+    int insert(int, int);
     void print();
 };
 
