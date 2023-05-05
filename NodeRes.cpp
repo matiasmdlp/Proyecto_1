@@ -10,16 +10,13 @@ NodeRes::NodeRes(int val){
 }
 
 NodeRes::~NodeRes(){
-    if(Arr!=nullptr){
-        Arr->~Node();
-    }
     if(Right!=nullptr){
         Right->~NodeRes();       
     }
     if(Left!=nullptr){
         Left->~NodeRes();       
     }
-    delete Padre, Right, Left, Arr, &Count, &Max;
+    delete Padre, Right, Left, &Count, &Max;
 }   
 
 void NodeRes:: setCount(int x){

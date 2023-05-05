@@ -1,8 +1,8 @@
 #include "Node.h"
 
-Node::Node(int val, Node* nodo1){
+Node::Node(int val){
     Max = val;
-    Next = nodo1;
+    Next = nullptr;
     Count = 0;
     Data = new int[Max]; 
 }
@@ -36,63 +36,138 @@ Node* Node::getNext(){
 }
 
 int Node::insert(int num, int pos){
-    if(Count<Max){
-        for(int i=Count-1; i>=pos; i--){
-            Data[i+1]=Data[i];
-        }
+    if(Count==0){
         Data[pos]=num;
-        Count++;
+        sumaCount();
         return 0;
-    }else{
-        if(Next==nullptr || Next->Count==Max){
-            if(pos<Count){
-                Node* aux = new Node(Max, nullptr);
-                aux->Next = Next;
-                Next = aux;
-                aux->insertLeft(Data[Max-1]);
-                for(int i=Max-2; i>=pos; i--){
-                    Data[i+1]=Data[i];
-                }
-                Data[pos]=num;
-                return 1;
-            }else{
-                Node* aux = new Node(Max, nullptr);
-                aux->Next = Next;
-                Next = aux;
-                aux->insertLeft(num);
-                
-                return 1;
-            }
-        }else if(Next->Count < Max){
-            Next->insertLeft(Data[Max-1]);
-            for(int i=Max-2; i>=pos; i--){
-                Data[i+1]=Data[i];
+    }else if(Count<Max){
+        if(pos==Count){
+            Data[pos]=num;
+            sumaCount();
+            return 0;
+        }else if(pos < Count){
+            for(int i = Count; i>pos; i--){
+                Data[i]=Data[i-1];
             }
             Data[pos]=num;
+            sumaCount();
             return 0;
         }
+    }else if(Count==Max){
+        if(Next!=nullptr){
+            if(Next->getCount() < Next->getMax()){
+                Next->insertLeft(Data[Max-1]);
+                for(int i=Count-1; i>pos; i--){
+                    Data[i]=Data[i-1];
+                }
+                Data[pos]=num;
+                return 0;
+            }else{
+                Node* extra = new Node(Max);
+                extra->setCount(0);
+                extra->setMax(Max);
+                extra->setNext(Next);
+                Next->insertLeft(Data[Max-1]);
+                for(int i=Count-1; i>pos; i--){
+                    Data[i]=Data[i-1];
+                }
+                Data[pos]=num;
+                /*print();*/
+                return 1;
+            }
+            
+        }else{
+            Node* extra = new Node(Max);
+            extra->setCount(0);
+            extra->setMax(Max);
+            Next->insertLeft(Data[Max-1]);
+            for(int i=Count-1; i>pos; i--){
+                Data[i]=Data[i-1];
+            }
+            Data[pos]=num;
+            /*print();*/
+            return 1;
+        }
     }
+    
 }
 
+
 int Node::insertLeft(int num){
-    return insert(num, 0);
+    if(Count==0){
+        Data[0]=num;
+        Count++;
+        return 0;
+    }else if(Count<Max){
+        for(int i=Count; i>0; i--){
+            Data[i]=Data[i-1];
+        }
+        Data[0]=num;
+        Count++;
+        return 0;
+    }else if(Next!=nullptr){
+        if(Next->getCount() < Next->getMax()){
+            Next->insertLeft(Data[Max-1]);
+            for(int i=Count-1; i>0; i--){
+                Data[i]=Data[i-1];
+            }
+            Data[0]=num;
+            return 0;
+        }else{
+            Node* extra = new Node(Max);
+            extra->setNext(Next);
+            extra->setCount(0);
+            extra->setMax(Max);
+            Next = extra;
+            Next->insertLeft(Data[Max-1]);
+            for(int i=Count-1; i>0; i--){
+                Data[i]=Data[i-1];
+            }
+            Data[0]=num;
+            return 1;
+        }
+    }else{
+        Node* extra = new Node(Max);
+        extra->setCount(0);
+        extra->setMax(Max);
+        Next = extra;
+        Next->insertLeft(Data[Max-1]);
+        for(int i=Count-1; i>0; i--){
+            Data[i]=Data[i-1];
+        }
+        Data[0]=num;
+        return 1;
+    }
 }
 
 int Node::insertRight(int num){
-    return insert(num, Count);
+    if(Count<Max){
+        Data[Count]=num;
+        sumaCount();
+        return 0;
+    }else{
+        Node* extra = new Node(Max);
+        extra->setCount(0);
+        extra->setMax(Max);
+        Next = extra;
+        Next->insertLeft(num);
+        return 1;
+    }
 }
 
 void Node::print(){
+    Node* nodo = Next;
     for(int i=0; i<Count; i++){
         std::cout<<Data[i]<<" - ";
     }
+
     if(Next!=nullptr){
         std::cout<<std::endl;
-        Next->print();
+        nodo->print();
     }else{
         std::cout<<std::endl;
-        std::cout<<std::endl;
     }
+    std::cout<<std::endl;
 }
 
 bool Node::find(int num){
@@ -106,4 +181,15 @@ bool Node::find(int num){
         x = Next->find(num);
     }
     return x; 
+}
+
+void Node::setMax(int x){
+    Max=x;
+}
+int Node::getMax(){
+    return Max;
+}
+
+void Node::sumaCount(){
+    Count++;
 }

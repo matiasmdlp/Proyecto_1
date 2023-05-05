@@ -9,7 +9,7 @@ using namespace std;
 
 class ListArr : public ListArrADT{
 private:
-	NodeRes* Arbol;
+	vector<NodeRes> Arbol;
 	Node* Head;
 	int num_nodos;
 	int nivel;
@@ -41,7 +41,10 @@ public:
     bool find(int); 
 	bool isEmpty();
 	int size();
-	void Agregar();		
+	void Agregar();
+	int getMax();
+	int getCount();		
+	Node* getArrList();
 };
 
 #endif
