@@ -28,7 +28,7 @@ void Array::insert_Left(int number) {
 		Count++;
 	}
 	else {
-		cout << "Arreglo Lleno"<<endl;
+		cout << "Esta Lleno"<<endl;
 		return;
 	}
 }
@@ -39,7 +39,7 @@ void Array::insert_Right(int number) {
 		Count++;
 	}
 	else {
-		cout << "Arreglo Lleno"<<endl;
+		cout << "Esta Lleno"<<endl;
 		return;
 	}
 }
@@ -53,7 +53,7 @@ void Array::insert(int number, int pos) {
 		Count++;
 	}
 	else {
-		cout << "Arreglo Lleno"<<endl;
+		cout << "Esta Lleno"<<endl;
 		return;
 	}
 }
