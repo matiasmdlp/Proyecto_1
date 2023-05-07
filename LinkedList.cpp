@@ -40,7 +40,7 @@ void LinkedList::insert_Right(int number) {
 	Count++;
 }
 
-void LinkedList::insert(int number, int pos) {  //Para ser consistentes, igualmente se cuenta desde el 1
+void LinkedList::insert(int number, int pos) { 
 	Node* newNode = new Node(number);
 	if (pos <= Count + 1 && pos>=1) {
 		if (pos == 1) {
@@ -62,7 +62,7 @@ void LinkedList::insert(int number, int pos) {  //Para ser consistentes, igualme
 		Count++;
 	}
 	else {
-		cout << "Error: Posición inexistente";
+		cout << "No existe esta posicion:"<<endl;
 		return;
 	}
 }

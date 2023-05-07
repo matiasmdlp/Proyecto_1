@@ -44,7 +44,7 @@ void Array::insert_Right(int number) {
 	}
 }
 
-void Array::insert(int number, int pos) { //Para ser consistentes, igualmente se cuenta desde el 1
+void Array::insert(int number, int pos) { 
 	if (Count + 1 <= Max && Count >= pos-1) {
 		for (int i = 0; i <= Max - pos; i++) {
 			data[Max - i] = data[Max - i - 1];
