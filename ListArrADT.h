@@ -14,4 +14,5 @@ public:
     virtual bool isEmpty()=0;
 };
 
+
 #endif

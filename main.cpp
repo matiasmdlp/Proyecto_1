@@ -206,6 +206,7 @@ int main() {
     return 0;
 }
 
+
 /*g++ main.cpp ListArr.cpp NodeRes.cpp  Node.cpp LinkedList.cpp Array.cpp -o main.exe*/
 
 

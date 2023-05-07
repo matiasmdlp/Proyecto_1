@@ -47,5 +47,6 @@ public:
 	Node* getArrList();
 };
 
+
 #endif
 

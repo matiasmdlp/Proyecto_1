@@ -218,3 +218,4 @@ Node* ListArr::getArrList(){
 int ListArr::getCount(){
     return Arbol[0].getCount();
 }
+
