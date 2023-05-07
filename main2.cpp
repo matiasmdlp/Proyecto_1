@@ -6,7 +6,7 @@
 using namespace std;
 
 int main() {
-    /*ListArr Arbol(3);
+    ListArr Arbol(3);
 
     Arbol.insert_left(7);
     Arbol.insert_left(4);
@@ -32,7 +32,7 @@ int main() {
         cout<<"El numero no se encuentra en el arbol."<<endl;
     }
 
-    cout<<"El numero de datos en el arbol es de: "<<Arbol.getCount()<<endl;*/
+    cout<<"El numero de datos en el arbol es de: "<<Arbol.getCount()<<endl;
 
     return 0;
 }
