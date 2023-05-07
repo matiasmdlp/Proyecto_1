@@ -100,11 +100,11 @@ void ListArr::Build(){ // si existe un Arbol, lo elimina y crea otro, en cas de 
     calcMAx();
     Arbol.clear();
 
-    for(int i=0; i<num_intnod; i++){
+    for(int i=0; i<num_intnod; i++){    //O( 2*b -1 )
         Arbol.push_back(NodeRes(0));
     }
     
-    for(int i=num_intnod; i<(num_intnod + num_nodos); i++){
+    for(int i=num_intnod; i<(num_intnod + num_nodos); i++){  //O( n/b )
         Arbol.push_back(NodeRes(0));
     }
 
@@ -138,7 +138,7 @@ int ListArr::sumar(int pos){        // desde la raiz pedimos la cantidad de dato
 }
 
 pair<int, int> ListArr::buscarpos(int i, int y){ // indice i(inicio de la busqueda, normalmente 0), posicion a encontrar "y", las posiciones se cuentan desde el 0; 
-    if(Arbol[i].getMax()==max){
+    if(Arbol[i].getMax()==max){        // O(log n)
         return std::make_pair(i,y);
     }
 
@@ -192,7 +192,7 @@ void ListArr::setNodeMax(int pos, int max_val){
 
 void ListArr::asociar(){
     Node* aux = Head;
-    for(int i=num_intnod; i<(num_intnod + num_nodos); i++){
+    for(int i=num_intnod; i<(num_intnod + num_nodos); i++){ // O(n/b)
         this->Arbol[i].setArr(aux);
         this->Arbol[i].setCount(this->Arbol[i].getArr()->getCount());
         this->Arbol[i].getArr()->setMax(max);
