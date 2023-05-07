@@ -33,13 +33,15 @@ int main() {
     clock_t time_Arr;
 
     ////**** Arr *****////
-
-    for(int n=10000; n<=10000000; n*10){
+    n=10000;
+    for(int k=0; k<5; k++){
         Array* Arr_insert = new Array(n+40); 
+        cout<<"entro "<<n<<endl;
         for(int i=0; i<n; i++){
             num = rand(); 
             Arr_insert->insert_Left(num);
         }
+        cout<<"relleno "<<endl;
 
         time_Arr = clock();
 
@@ -47,11 +49,12 @@ int main() {
             num = rand();
             Arr_insert->insert_Left(num);
         }
+        cout<<"insert left "<<endl;
 
         time_Arr = clock() - time_Arr;
         Time=(float)(time_Arr/CLOCKS_PER_SEC)/20;
         ArrLeft.push_back(Time);
-       
+        cout<<"Guardo el tiempo insert left  "<<endl;
             
         time_Arr = clock();
 
@@ -59,10 +62,12 @@ int main() {
             num = rand();
             Arr_insert->insert_Right(num);
         }
+        cout<<"insert Right "<<endl;
 
         time_Arr = clock() - time_Arr;
         Time=(float)(time_Arr/CLOCKS_PER_SEC)/20;
         ArrRight.push_back(Time);
+        cout<<"Guardo el tiempo insert right  "<<endl;
 
             
         time_Arr = clock();
@@ -71,19 +76,24 @@ int main() {
             num = rand();
             Arr_insert->find(num);
         }
+        cout<<"find "<<endl;
 
         time_Arr = clock() - time_Arr;
         Time=(float)(time_Arr/CLOCKS_PER_SEC)/20;
         ArrFind.push_back(Time);
+        cout<<"Guardo el tiempo insert find  "<<endl;
 
 
         Arr_insert->~Array();
+        cout<<"elimina Arr  "<<endl;
+        n = n*10;
     }
 
     ////**** List *****////
 
     /*
-    for(int n=10000; n<=10000000; n*10){
+    n=10000;
+    for(int k=0; k<5; k++){
         LinkedList* List = new LinkedList(); 
         for(int i=0; i<n; i++){
             num = rand(); 
@@ -130,13 +140,15 @@ int main() {
 
 
         List->~LinkedList();
+        n = n*10;
     }
     */
 
     ////**** ListArr *****////
     /*
     b=1;
-    for(int n=10000; n<=10000000; n*10){
+    n=10000;
+    for(int k=0; k<5; k++){
         ListArr* ListArr_insert = new ListArr(b);
         
         for(int i=0; i<n; i++){
@@ -184,6 +196,7 @@ int main() {
 
 
         ListArr_insert->~ListArr();
+        n = n*10;
     }
     */
 
