@@ -24,7 +24,6 @@ int main() {
     clock_t time_Arr3;
     
        
-
     ////**** ListArr *****////
     b=64;
     n=10000;

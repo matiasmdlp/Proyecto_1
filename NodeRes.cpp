@@ -3,20 +3,11 @@
 NodeRes::NodeRes(int val){
     Max = val;
     Count = 0;
-    Padre = nullptr;
-    Right = nullptr;
-    Left = nullptr;
     Arr = nullptr;
 }
 
 NodeRes::~NodeRes(){
-    if(Right!=nullptr){
-        Right->~NodeRes();       
-    }
-    if(Left!=nullptr){
-        Left->~NodeRes();       
-    }
-    delete Padre, Right, Left, &Count, &Max;
+    delete &Count, &Max;
 }   
 
 void NodeRes:: setCount(int x){
@@ -37,30 +28,6 @@ int NodeRes::getMax(){
 
 void NodeRes::suma_sup(){
     Count++;
-}
-
-void NodeRes::setPadre(NodeRes* node){
-    Padre = node;
-}
-
-NodeRes* NodeRes::getPadre(){
-    return Padre;
-}
-
-void NodeRes::setRight(NodeRes* node){
-    Right = node;
-}
-
-NodeRes* NodeRes::getRight(){
-    return Right;
-}
-
-void NodeRes::setLeft(NodeRes* node){
-    Left = node;
-}
-
-NodeRes* NodeRes::getLeft(){
-    return Left;
 }
 
 void NodeRes::setArr(Node* node){

@@ -37,5 +37,4 @@ int main() {
     return 0;
 }
 
-
 /*g++ main.cpp ListArr.cpp NodeRes.cpp  Node.cpp -o main.exe*/

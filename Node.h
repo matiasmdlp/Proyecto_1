@@ -28,5 +28,4 @@ public:
     void sumaCount();
 };
 
-
 #endif
